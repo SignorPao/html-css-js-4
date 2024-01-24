@@ -135,6 +135,25 @@ body.dark-theme {
 	Color changes in some parts of 
 	the website, in dark theme
 ==========*/
+.dark-theme :is(.shadow-header, .nav__menu, .scrollup) {
+  box-shadow: 0 2px 16px hsla(0, 0%, 0%, 0.3);
+}
+
+.dark-theme .scrollup {
+  background-color: var(--container-color);
+}
+
+.dark-theme::-webkit-scrollbar {
+  background-color: hsl(0, 0%, 15%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 30%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(0, 0%, 40%);
+}
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
@@ -576,10 +595,10 @@ body.dark-theme {
 }
 
 .join__leaf-1 {
-  top: -2.5rem;
+  top: -3rem;
   left: 0.75rem;
   rotate: 135deg;
-  width: 100px;
+  width: 90px;
 }
 .join__leaf-2 {
   right: 1.5rem;
@@ -727,12 +746,91 @@ body.dark-theme {
 
 /* Show Scroll Up */
 .show-scroll {
-  bottom: 3rem;
+  bottom: 4rem;
 }
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
+@media screen and (max-width: 300px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .home__title {
+    font-size: 2.5rem;
+  }
+
+  .home__fruit {
+    top: 5.5rem;
+  }
+
+  .home__branch {
+    right: -4rem;
+  }
+
+  .enjoy__container,
+  .popular__container {
+    grid-template-columns: 220px;
+  }
+
+  .about__branch {
+    bottom: 12rem;
+  }
+
+  .join__content {
+    padding: 2rem 1rem;
+  }
+
+  .join__leaf-1 {
+    top: -3.5rem;
+    width: 85px;
+  }
+
+  .footer__data {
+    grid-template-columns: max-content;
+    gap: 2rem;
+  }
+}
 
 /* For medium devices */
+@media screen and (min-width: 576px) {
+  .home__container,
+  .about__container {
+    grid-template-columns: 370px;
+    justify-content: center;
+  }
+
+  .join__description {
+    width: 350px;
+    margin: 0 auto;
+  }
+
+  .join__form {
+    background-color: var(--body-color);
+    padding: 0.5rem;
+    border-radius: 4rem;
+    grid-template-columns: 1fr max-content;
+    transition: background-color 0.4s;
+  }
+
+  .join__input {
+    padding: 1.25rem 1rem;
+  }
+
+  .footer__data {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .show-scroll {
+    bottom: 3rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+}
 
 /* For large devices */
