@@ -708,6 +708,15 @@ body.dark-theme {
   color: var(--text-color-light);
 }
 
+.footer__copy a{
+  color: inherit;
+  transition: color .4s;
+}
+
+.footer__copy a:hover{
+  color: var(--first-color);
+}
+
 /*=============== SCROLL BAR ===============*/
 ::-webkit-scrollbar {
   width: 0.6rem;

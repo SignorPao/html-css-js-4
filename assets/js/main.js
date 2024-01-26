@@ -114,3 +114,9 @@ sr.reveal(`.home__img`, { origin: "bottom" });
 sr.reveal(`.enjoy__card, .popular__card`, { interval: 100 });
 sr.reveal(`.about__data`, { origin: "right" });
 sr.reveal(`.about__img`, { origin: "left" });
+
+/*=============== THIS YEAR ===============*/
+const thisYear = new Date().getFullYear(),
+  year = document.getElementById("year");
+
+year.innerHTML = `${thisYear}`;
