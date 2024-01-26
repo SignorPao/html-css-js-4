@@ -1013,4 +1013,58 @@ body.dark-theme {
     width: 100px;
     right: 6rem;
   }
+
+  .footer {
+    position: relative;
+    padding-block: 5erm 3rem;
+  }
+
+  .footer__container {
+    position: initial;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: space-between;
+  }
+
+  .footer__logo {
+    font-size: var(--h2-font-size);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer__data {
+    column-gap: 1.5rem;
+  }
+
+  .footer__title {
+    margin-bottom: 1.5rem;
+  }
+
+  .footer__social {
+    column-gap: 1.25rem;
+  }
+
+  .footer__social-link {
+    font-size: 1.5rem;
+  }
+
+  .footer__fruit {
+    width: 70px;
+    bottom: 5rem;
+    right: 35%;
+  }
+
+  .footer__branch-1 {
+    width: 200px;
+    top: 6rem;
+    right: -2rem;
+  }
+
+  .footer__branch-2 {
+    width: 200px;
+    left: 20%;
+    bottom: -4rem;
+  }
+
+  .scrollup{
+    right: 3rem;
+  }
 }
