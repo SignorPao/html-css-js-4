@@ -111,12 +111,119 @@ const sr = ScrollReveal({
 
 sr.reveal(`.home__data, .join__container, .footer`);
 sr.reveal(`.home__img`, { origin: "bottom" });
-sr.reveal(`.enjoy__card, .popular__card`, { interval: 100 });
+sr.reveal(`.enjoy__card`, { interval: 100 });
 sr.reveal(`.about__data`, { origin: "right" });
 sr.reveal(`.about__img`, { origin: "left" });
 
 /*=============== THIS YEAR ===============*/
 const thisYear = new Date().getFullYear(),
   year = document.getElementById("year");
-
 year.innerHTML = `${thisYear}`;
+
+/*=============== PAGINATION(for Popular cards) ===============*/
+const paginationNumbers = document.getElementById("pagination-numbers"),
+  controls = document.getElementById("controls"),
+  paginatedContent = document.getElementById("content"),
+  contentItems = paginatedContent.querySelectorAll("article"),
+  nextButton = document.getElementById("next-button"),
+  prevButton = document.getElementById("prev-button"),
+  pageNumbers = document.getElementById("page-numbers"),
+  paginationLimit = 3,
+  pageCount = Math.ceil(contentItems.length / paginationLimit);
+
+let currentPage = 1;
+
+if (pageCount <= 1) {
+  controls.style.display = "none";
+}
+
+const disableButton = (button) => {
+  button.classList.add("disabled");
+  button.setAttribute("disabled", true);
+};
+
+const enableButton = (button) => {
+  button.classList.remove("disabled");
+  button.removeAttribute("disabled");
+};
+
+const handlePageButtonsStatus = () => {
+  if (currentPage === 1) {
+    disableButton(prevButton);
+  } else {
+    enableButton(prevButton);
+  }
+
+  if (pageCount === currentPage) {
+    disableButton(nextButton);
+  } else {
+    enableButton(nextButton);
+  }
+};
+
+const handleActivePageNumber = () => {
+  document.querySelectorAll(".pagination-button").forEach((button) => {
+    button.classList.remove("active");
+    const pageIndex = Number(button.getAttribute("page-index"));
+    if (pageIndex == currentPage) {
+      button.classList.add("active");
+    }
+  });
+};
+
+const appendPageNumber = (index) => {
+  const pageNumber = document.createElement("button");
+  pageNumber.className = "pagination-button";
+  pageNumber.innerHTML = index;
+  pageNumber.setAttribute("page-index", index);
+  pageNumber.setAttribute("aria-label", "Page " + index);
+
+  paginationNumbers.appendChild(pageNumber);
+};
+
+const getPaginationNumbers = () => {
+  for (let i = 1; i <= pageCount; i++) {
+    appendPageNumber(i);
+  }
+};
+
+const setCurrentPage = (pageNum) => {
+  currentPage = pageNum;
+  pageNumbers.textContent = `Page ${currentPage} of ${pageCount}`;
+
+  handleActivePageNumber();
+  handlePageButtonsStatus();
+
+  const prevRange = (pageNum - 1) * paginationLimit;
+  const currRange = pageNum * paginationLimit;
+
+  contentItems.forEach((item, index) => {
+    item.classList.add("hidden");
+    if (index >= prevRange && index < currRange) {
+      item.classList.remove("hidden");
+    }
+  });
+};
+
+window.addEventListener("load", () => {
+  getPaginationNumbers();
+  setCurrentPage(1);
+
+  prevButton.addEventListener("click", () => {
+    setCurrentPage(currentPage - 1);
+  });
+
+  nextButton.addEventListener("click", () => {
+    setCurrentPage(currentPage + 1);
+  });
+
+  document.querySelectorAll(".pagination-button").forEach((button) => {
+    const pageIndex = Number(button.getAttribute("page-index"));
+
+    if (pageIndex) {
+      button.addEventListener("click", () => {
+        setCurrentPage(pageIndex);
+      });
+    }
+  });
+});

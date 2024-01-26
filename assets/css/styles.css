@@ -523,6 +523,63 @@ body.dark-theme {
   transform: translateY(-0.3rem);
 }
 
+/* Pagination controls */
+#controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-nav {
+  display: flex;
+}
+
+.pagination-button {
+  color: var(--first-color);
+  background-color: var(--body-color);
+  border: 1px solid var(--first-color);
+  transition: color 0.4s, background-color 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+  border-radius: 4rem;
+  font-weight: var(--font-semi-bold);
+  margin: 0 0.3rem;
+  padding: 0.5rem 1rem;
+}
+
+.pagination-button:not(.disabled):hover {
+  background-color: var(--first-color);
+  color: var(--white-color);
+  box-shadow: 0 8px 24px hsla(140, 40%, 48%, 0.3);
+}
+
+.pagination-button.disabled {
+  border: 1px solid var(--text-color-light);
+  background-color: transparent;
+  color: var(--text-color-light);
+  font-weight: lighter;
+  cursor: auto;
+}
+
+.pagination-button.active {
+  background-color: var(--first-color);
+  color: var(--white-color);
+}
+
+#pagination-numbers {
+  display: flex;
+}
+
+#page-numbers {
+  font-size: 0.8rem;
+}
+
+.hidden {
+  display: none;
+}
+
 /*=============== JOIN ===============*/
 .join__container {
   position: relative;
@@ -708,12 +765,12 @@ body.dark-theme {
   color: var(--text-color-light);
 }
 
-.footer__copy a{
+.footer__copy a {
   color: inherit;
-  transition: color .4s;
+  transition: color 0.4s;
 }
 
-.footer__copy a:hover{
+.footer__copy a:hover {
   color: var(--first-color);
 }
 
@@ -786,6 +843,11 @@ body.dark-theme {
     bottom: 12rem;
   }
 
+  .pagination-button {
+    margin: 0 0.2rem;
+    padding: 0.5rem 1rem;
+  }
+
   .join__content {
     padding: 2rem 1rem;
   }
@@ -807,6 +869,11 @@ body.dark-theme {
   .about__container {
     grid-template-columns: 370px;
     justify-content: center;
+  }
+
+  .pagination-button {
+    padding: 1rem 2rem;
+    margin: 0 0.5rem;
   }
 
   .join__description {
@@ -1073,7 +1140,7 @@ body.dark-theme {
     bottom: -4rem;
   }
 
-  .scrollup{
+  .scrollup {
     right: 3rem;
   }
 }

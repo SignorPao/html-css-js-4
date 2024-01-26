@@ -175,7 +175,8 @@
       <section class="popular section" id="popular">
         <h2 class="section__title">Popular Fruits</h2>
 
-        <div class="popular__container container grid">
+        <!-- Paginated content -->
+        <div class="popular__container container grid" id="content">
           <article class="popular__card">
             <div class="popular__bg"></div>
 
@@ -277,6 +278,33 @@
               <i class="ri-add-line"></i>
             </button>
           </article>
+        </div>
+
+        <!-- Pagination controls -->
+        <div id="controls">
+          <nav class="pagination-nav">
+            <button
+              class="pagination-button"
+              id="prev-button"
+              aria-label="Previous page"
+              title="Previous page"
+            >
+              &lt; Prev
+            </button>
+  
+            <div id="pagination-numbers"></div>
+  
+            <button
+              class="pagination-button"
+              id="next-button"
+              aria-label="Next page"
+              title="Next page"
+            >
+              Next &gt;
+            </button>
+          </nav>
+  
+          <p id="page-numbers"></p>
         </div>
       </section>
 
